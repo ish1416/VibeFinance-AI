@@ -57,8 +57,8 @@ DISCLAIMER: Generated autonomously by VibeFinance AI Tri-Agent Architecture. Gro
   };
 
   return (
-    <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal-window memo-modal" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-backdrop modal-overlay" onClick={onClose}>
+      <div className="modal-window modal-dialog memo-modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <div className="modal-title-wrap">
             <div className="modal-icon-badge memo-badge">

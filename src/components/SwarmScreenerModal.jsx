@@ -35,8 +35,8 @@ export function SwarmScreenerModal({ isOpen, onClose, onSelectStock, currentRisk
   });
 
   return (
-    <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal-window screener-modal" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-backdrop modal-overlay" onClick={onClose}>
+      <div className="modal-window modal-dialog screener-modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <div className="modal-title-wrap">
             <div className="modal-icon-badge">
@@ -70,7 +70,11 @@ export function SwarmScreenerModal({ isOpen, onClose, onSelectStock, currentRisk
               </thead>
               <tbody>
                 {swarmData.map(({ stock, tech, fund, sent, synth }) => {
-                  const isPositive = stock.change.startsWith("+");
+                  const isPositive = stock.change >= 0;
+                  const isBuy = synth.verdictBadge === "BUY" || synth.verdictBadge === "STRONG_BUY";
+                  const isHold = synth.verdictBadge === "HOLD";
+                  const verdictColor = isBuy ? "#10b981" : isHold ? "#f59e0b" : "#ef4444";
+
                   return (
                     <tr key={stock.symbol}>
                       <td>
@@ -82,26 +86,28 @@ export function SwarmScreenerModal({ isOpen, onClose, onSelectStock, currentRisk
                       </td>
                       <td>
                         <div className="screener-price-info">
-                          <span className="screener-ltp">₹{stock.currentPrice}</span>
-                          <span className={`screener-chg ${isPositive ? "pos" : "neg"}`}>{stock.change}</span>
+                          <span className="screener-ltp">₹{stock.price.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+                          <span className={`screener-chg ${isPositive ? "pos" : "neg"}`}>
+                            {isPositive ? "+" : ""}{stock.change.toFixed(2)} ({isPositive ? "+" : ""}{stock.changePercent}%)
+                          </span>
                         </div>
                       </td>
                       <td>
                         <div className="screener-agent-pill tech">
                           <Activity size={12} />
-                          <span>RSI {tech.rsi} • {tech.momentumSignal}</span>
+                          <span>RSI {tech.metrics.rsi} • {tech.signal.replace(/_/g, " ")}</span>
                         </div>
                       </td>
                       <td>
                         <div className="screener-agent-pill fund">
                           <ShieldCheck size={12} />
-                          <span>Health {fund.financialHealthScore}/100 • PE {stock.pe}</span>
+                          <span>P/E {stock.peRatio}x • {fund.signal.replace(/_/g, " ")}</span>
                         </div>
                       </td>
                       <td>
                         <div className="screener-agent-pill sent">
                           <TrendingUp size={12} />
-                          <span>PCR {stock.pcr} • {sent.flowDirection}</span>
+                          <span>PCR {sent.metrics.pcrRatio} • {sent.signal.replace(/_/g, " ")}</span>
                         </div>
                       </td>
                       <td>
@@ -109,14 +115,14 @@ export function SwarmScreenerModal({ isOpen, onClose, onSelectStock, currentRisk
                           <span
                             className="screener-verdict-tag"
                             style={{
-                              backgroundColor: `${synth.verdictBadgeColor}18`,
-                              color: synth.verdictBadgeColor,
-                              borderColor: `${synth.verdictBadgeColor}40`
+                              backgroundColor: `${verdictColor}18`,
+                              color: verdictColor,
+                              borderColor: `${verdictColor}40`
                             }}
                           >
-                            {synth.verdict}
+                            {synth.finalVerdict}
                           </span>
-                          <span className="screener-conf">Conf: {synth.confidenceScore}%</span>
+                          <span className="screener-conf">Conf: {Math.round(synth.consolidatedConfidence * 100)}%</span>
                         </div>
                       </td>
                       <td>

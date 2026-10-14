@@ -41,8 +41,8 @@ export function OrderTerminalModal({ isOpen, onClose, stock, synthesis, riskProf
   };
 
   return (
-    <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal-window order-modal" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-backdrop modal-overlay" onClick={onClose}>
+      <div className="modal-window modal-dialog order-modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <div className="modal-title-wrap">
             <div className="modal-icon-badge order-badge">

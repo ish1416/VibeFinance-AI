@@ -43,8 +43,8 @@ export function SemanticSearchModal({ isOpen, onClose }) {
   ];
 
   return (
-    <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal-window semantic-modal" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-backdrop modal-overlay" onClick={onClose}>
+      <div className="modal-window modal-dialog semantic-modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <div className="modal-title-wrap">
             <div className="modal-icon-badge vector-badge">
