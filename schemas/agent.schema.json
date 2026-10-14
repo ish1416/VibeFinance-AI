@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibefinance.ai/schemas/agent.schema.json",
+  "title": "VibeFinance AgentOutput",
+  "description": "Frozen output contract for every specialized agent. The orchestrator rejects any envelope that fails this schema; a failed agent still returns a valid envelope with status FAILED so the pipeline never crashes and never renders an uncited FACT.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["agent_id", "agent_name", "role", "status", "signal", "score", "confidence", "confidence_basis", "evidence", "metrics", "reasoning", "action", "execution"],
+  "properties": {
+    "agent_id": { "enum": ["A1_TECHNICAL", "A2_FUNDAMENTAL_RAG", "A3_SENTIMENT_FLOW", "A4_PORTFOLIO_RISK"] },
+    "agent_name": { "type": "string", "minLength": 3 },
+    "role": { "type": "string", "minLength": 3 },
+    "status": { "enum": ["HEALTHY", "DEGRADED", "INSUFFICIENT_EVIDENCE", "FAILED"] },
+    "signal": {
+      "type": "string",
+      "description": "Closed vocabulary, mirrored in backend/constants.py and src/constants.js",
+      "enum": [
+        "STRONG_BULLISH", "MILD_BULLISH", "NEUTRAL", "BEARISH_CONSOLIDATION", "STRONG_BEARISH",
+        "STRONG_FUNDAMENTAL", "DEEP_VALUE_UNDERVALUED", "VALUATION_EXPENSIVE", "CAUTION_MISSING_DISCLOSURE",
+        "HEAVY_INSTITUTIONAL_INFLOW", "NET_ACCUMULATION", "MODERATE_INFLOW", "NEUTRAL_FLOW",
+        "MIXED_FLOW_DII_SUPPORT", "STRONG_BUY_SENTIMENT", "INSTITUTIONAL_OUTFLOW",
+        "UNDERWEIGHT", "BALANCED", "OVERWEIGHT", "CONCENTRATION_BREACH", "UNKNOWN"
+      ]
+    },
+    "score": { "type": "number", "minimum": 0, "maximum": 100, "description": "Deterministic, computed in code - never produced by the LLM" },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "confidence_basis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["signal_strength", "evidence_support", "agreement", "data_freshness"],
+      "description": "Confidence must be derived from these four factors, never a bare constant",
+      "properties": {
+        "signal_strength": { "type": "number", "minimum": 0, "maximum": 1 },
+        "evidence_support": { "type": "number", "minimum": 0, "maximum": 1 },
+        "agreement": { "type": "number", "minimum": 0, "maximum": 1 },
+        "data_freshness": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "description": "Empty only when status != HEALTHY. A FACT with verification.passed=false is suppressed before render.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["claim_id", "claim", "claim_type", "source", "verification"],
+        "properties": {
+          "claim_id": { "type": "string", "pattern": "^c[0-9]+$" },
+          "claim": { "type": "string", "minLength": 8 },
+          "claim_type": { "enum": ["FACT", "INFERENCE"] },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["doc_id", "chunk_id", "quote"],
+            "properties": {
+              "doc_id": { "type": "string" },
+              "chunk_id": { "type": "string" },
+              "title": { "type": "string" },
+              "regulator": { "type": "string" },
+              "section": { "type": "string" },
+              "page": { "type": ["integer", "null"] },
+              "filed_at": { "type": ["string", "null"] },
+              "url": { "type": ["string", "null"] },
+              "quote": { "type": "string", "minLength": 20 },
+              "span": {
+                "type": ["array", "null"],
+                "items": { "type": "integer", "minimum": 0 },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          },
+          "verification": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["method", "passed"],
+            "properties": {
+              "method": { "enum": ["NUMERIC_MATCH", "QUOTE_SUPPORTED", "UNSUPPORTED"] },
+              "passed": { "type": "boolean" },
+              "detail": { "type": ["string", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "metrics": { "type": "object", "description": "Flat key/value bag of computed metrics for this dimension" },
+    "reasoning": { "type": "string", "minLength": 10, "description": "LLM narration. Must not contain a number that is absent from the provided evidence." },
+    "action": { "type": "string", "minLength": 3 },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["latency_ms", "model", "cached", "attempts"],
+      "properties": {
+        "latency_ms": { "type": "integer", "minimum": 0 },
+        "model": { "type": "string" },
+        "prompt_tokens": { "type": ["integer", "null"] },
+        "completion_tokens": { "type": ["integer", "null"] },
+        "cached": { "type": "boolean" },
+        "attempts": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "error": { "type": ["string", "null"] }
+  }
+}
