@@ -1,0 +1,8 @@
+{
+  "reasoning": "14-period RSI stands at 64.2. Price of \u20b91894.2 is trading against 50-day DMA (\u20b91812.5) and 200-day DMA (\u20b91620.0). Volume surge is 1.78\u00d7 the 20-day median with sustained breakout support.",
+  "action": "BUY_MOMENTUM_BREAKOUT",
+  "model": "deterministic-template",
+  "cached": false,
+  "attempts": 1,
+  "latency_ms": 2
+}
