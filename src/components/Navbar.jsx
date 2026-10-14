@@ -1,5 +1,5 @@
 import React from "react";
-import { Activity, ShieldAlert, Cpu, BookOpen, AlertTriangle, Play, Square, Layers } from "lucide-react";
+import { Activity, ShieldAlert, Cpu, BookOpen, AlertTriangle, Play, Square, Layers, Database } from "lucide-react";
 
 export function Navbar({
   isDegraded,
@@ -7,6 +7,7 @@ export function Navbar({
   onOpenArchitecture,
   onOpenCitations,
   onOpenScreener,
+  onOpenSemanticSearch,
   citationsCount,
   isTourRunning,
   onStartTour,
@@ -78,6 +79,12 @@ export function Navbar({
           <BookOpen size={15} />
           <span>Verified SEBI Citations</span>
           <span className="citation-badge">{citationsCount}</span>
+        </button>
+
+        {/* Vector RAG Semantic Search Button */}
+        <button className="btn-vector" onClick={onOpenSemanticSearch} title="Explore Vector Embeddings & Semantic Search across SEBI LODR Filings">
+          <Database size={15} />
+          <span>Vector RAG</span>
         </button>
 
         {/* Swarm Screener Matrix Button */}

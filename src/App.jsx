@@ -12,6 +12,9 @@ import { MacroShockSimulator } from "./components/MacroShockSimulator";
 import { SwarmScreenerModal } from "./components/SwarmScreenerModal";
 import { OrderTerminalModal } from "./components/OrderTerminalModal";
 import { InvestmentMemoModal } from "./components/InvestmentMemoModal";
+import { PortfolioWatchlist } from "./components/PortfolioWatchlist";
+import { BacktestingEngine } from "./components/BacktestingEngine";
+import { SemanticSearchModal } from "./components/SemanticSearchModal";
 import { STOCKS_DATA } from "./data/stocksData";
 import { runTechnicalAgent } from "./agents/technicalAgent";
 import { runFundamentalRAGAgent } from "./agents/fundamentalAgent";
@@ -32,6 +35,7 @@ export default function App() {
   const [showScreenerModal, setShowScreenerModal] = useState(false);
   const [showOrderTerminal, setShowOrderTerminal] = useState(false);
   const [showInvestmentMemo, setShowInvestmentMemo] = useState(false);
+  const [showSemanticSearchModal, setShowSemanticSearchModal] = useState(false);
 
   // Auto Demo Tour State
   const [isTourRunning, setIsTourRunning] = useState(false);
@@ -185,6 +189,7 @@ export default function App() {
         onOpenArchitecture={() => setShowArchitectureModal(true)}
         onOpenCitations={() => setShowCitationModal(true)}
         onOpenScreener={() => setShowScreenerModal(true)}
+        onOpenSemanticSearch={() => setShowSemanticSearchModal(true)}
         citationsCount={synthesis.citationsCount}
         isTourRunning={isTourRunning}
         onStartTour={startTour}
@@ -275,6 +280,15 @@ export default function App() {
           sentimentResult={sentimentResult}
           isDegraded={isDegraded}
         />
+
+        {/* Portfolio & Watchlist Tracker (PS 04 Mandatory MVP #5) */}
+        <PortfolioWatchlist
+          onSelectStock={(sym) => setSelectedSymbol(sym)}
+          currentRiskProfile={selectedRiskProfile}
+        />
+
+        {/* 30-Day Forward Return Backtesting & Evaluation Engine */}
+        <BacktestingEngine />
       </main>
 
       {/* Footer */}
@@ -327,6 +341,11 @@ export default function App() {
         fundamentalResult={fundamentalResult}
         sentimentResult={sentimentResult}
         riskProfile={selectedRiskProfile}
+      />
+
+      <SemanticSearchModal
+        isOpen={showSemanticSearchModal}
+        onClose={() => setShowSemanticSearchModal(false)}
       />
     </div>
   );
