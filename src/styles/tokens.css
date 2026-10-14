@@ -1,0 +1,109 @@
+/* ============================================================================
+   VibeFinance AI — Design tokens (Control Center design system)
+   Every component references these variables. No raw hex in components.
+   ========================================================================= */
+
+:root {
+  /* ── Frame & surfaces ─────────────────────────────────────────────────── */
+  --vf-frame: #0b0b0d;          /* outer frame / top bar / dock */
+  --vf-canvas: #f7f7fb;         /* app canvas */
+  --vf-panel: #fafafd;          /* side panel surface */
+  --vf-surface: #ffffff;        /* cards */
+  --vf-backdrop: #ececf1;       /* desktop area behind the frame */
+
+  /* ── Nav ──────────────────────────────────────────────────────────────── */
+  --vf-nav-pill: #2a2a2e;
+  --vf-nav-icon: #8a8a94;
+  --vf-nav-icon-hover-bg: #1a1a1d;
+  --vf-nav-icon-hover: #ffffff;
+
+  /* ── Text ─────────────────────────────────────────────────────────────── */
+  --vf-text-1: #111114;         /* headings, numbers */
+  --vf-text-2: #6b6b76;         /* body copy, meaningful labels (4.9:1 on canvas) */
+  --vf-text-3: #9a9aa5;         /* decorative meta only (2.6:1 — never for meaning) */
+  --vf-on-dark: #ffffff;
+  --vf-on-dark-dim: #8a8a94;
+
+  /* ── Lines ────────────────────────────────────────────────────────────── */
+  --vf-hairline: #ececf2;
+  --vf-dashed: #c9c9d3;
+  --vf-soft: #f1f1f5;           /* neutral pill / ghost button bg */
+  --vf-soft-ink: #55555e;
+
+  /* ── Pastels (category coding, applied consistently) ──────────────────── */
+  --vf-p-blue: #dce9fb;         /* market / price */
+  --vf-p-green: #d5f0cf;        /* technical / healthy / positive */
+  --vf-p-yellow: #fde8b5;       /* sentiment / flow */
+  --vf-p-lav: #e3c3f6;          /* fundamental / RAG / featured */
+  --vf-p-lilac: #e8d6f8;        /* portfolio / risk */
+  --vf-p-pink: #fbd6dd;         /* alerts / breaches / degraded */
+  --vf-p-ink: #111114;          /* icon ink on pastels */
+
+  /* ── States ───────────────────────────────────────────────────────────── */
+  --vf-live: #3ddc84;
+  --vf-ok: #d5f0cf;
+  --vf-bad: #fde0e0;
+  --vf-bad-ink: #d64545;
+  --vf-warn: #fde8b5;
+  --vf-warn-ink: #8a5a00;
+  --vf-info: #dce9fb;
+  --vf-info-ink: #1d4e89;
+
+  /* ── Avatar ───────────────────────────────────────────────────────────── */
+  --vf-avatar-bg: #e9d5ff;
+  --vf-avatar-ink: #5b21b6;
+
+  /* ── Radii ────────────────────────────────────────────────────────────── */
+  --vf-r-frame: 36px;
+  --vf-r-canvas: 28px;
+  --vf-r-card: 24px;
+  --vf-r-stat: 22px;
+  --vf-r-panel: 20px;
+  --vf-r-pill: 999px;
+
+  /* ── Elevation ────────────────────────────────────────────────────────── */
+  --vf-sh-card: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --vf-sh-tab: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --vf-sh-dock: 0 12px 30px rgba(0, 0, 0, 0.25);
+
+  /* ── Spacing (8px base grid) ──────────────────────────────────────────── */
+  --vf-s1: 8px;
+  --vf-s2: 16px;
+  --vf-s3: 24px;
+  --vf-s4: 32px;
+  --vf-pad-canvas: 24px;
+  --vf-pad-card: 18px;
+  --vf-pad-card-lg: 20px;
+  --vf-pad-panel: 14px;
+
+  /* ── Type ─────────────────────────────────────────────────────────────── */
+  --vf-font: "Plus Jakarta Sans", Inter, system-ui, -apple-system, sans-serif;
+  --vf-fs-title: 28px;
+  --vf-fs-stat: 34px;
+  --vf-fs-cardtitle: 17px;
+  --vf-fs-paneltitle: 20px;
+  --vf-fs-label: 13px;
+  --vf-fs-body: 12px;
+  --vf-fs-meta: 11px;
+  --vf-fs-pill: 11.5px;
+  --vf-fs-micro: 9px;
+
+  --vf-dur: 150ms;
+  --vf-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Optional dark surface set (same component tree, tokens only) ──────── */
+[data-theme="dark"] {
+  --vf-canvas: #101015;
+  --vf-panel: #16161c;
+  --vf-surface: #1b1b22;
+  --vf-backdrop: #08080a;
+  --vf-text-1: #f6f6f8;
+  --vf-text-2: #b4b4c0;
+  --vf-text-3: #7c7c8a;
+  --vf-hairline: #2a2a33;
+  --vf-dashed: #3a3a45;
+  --vf-soft: #24242c;
+  --vf-soft-ink: #d3d3dc;
+  --vf-sh-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+}

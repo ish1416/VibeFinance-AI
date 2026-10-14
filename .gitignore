@@ -12,6 +12,18 @@ dist
 dist-ssr
 *.local
 
+# Secrets — never commit real keys
+.env
+.env.*
+!.env.example
+
+# Local runtime state (committed artifacts live in data/snapshots, data/corpus, data/index, data/eval)
+*.db
+*.sqlite
+__pycache__/
+.venv/
+venv/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

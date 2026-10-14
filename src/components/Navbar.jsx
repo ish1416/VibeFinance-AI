@@ -1,5 +1,5 @@
 import React from "react";
-import { Activity, ShieldAlert, Cpu, BookOpen, AlertTriangle } from "lucide-react";
+import { ShieldAlert, Cpu, BookOpen, AlertTriangle } from "lucide-react";
 
 export function Navbar({ isDegraded, onToggleDegraded, onOpenArchitecture, onOpenCitations, citationsCount }) {
   return (
