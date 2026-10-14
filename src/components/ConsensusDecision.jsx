@@ -1,8 +1,14 @@
 import React from "react";
-import { Sparkles, Shield, Target, AlertTriangle, ArrowRight, CheckCircle2, UserCheck, Flame, Scale } from "lucide-react";
+import { Sparkles, Shield, Target, AlertTriangle, ArrowRight, CheckCircle2, UserCheck, Flame, Scale, Zap, FileText } from "lucide-react";
 import { RISK_PROFILES } from "../agents/synthesisEngine";
 
-export function ConsensusDecision({ synthesis, selectedRiskProfile, onSelectRiskProfile }) {
+export function ConsensusDecision({
+  synthesis,
+  selectedRiskProfile,
+  onSelectRiskProfile,
+  onOpenOrderTerminal,
+  onOpenInvestmentMemo
+}) {
   const isBuy = synthesis.verdictBadge === "BUY" || synthesis.verdictBadge === "STRONG_BUY";
   const isHold = synthesis.verdictBadge === "HOLD";
   const isWarning = synthesis.verdictBadge === "WARNING";
@@ -57,6 +63,18 @@ export function ConsensusDecision({ synthesis, selectedRiskProfile, onSelectRisk
               <span className="target-lbl">Guardrail Stop-Loss ({synthesis.riskProfile.stopLossPercent}%)</span>
               <span className="target-val text-red">₹{synthesis.stopLossPrice.toLocaleString("en-IN")}</span>
             </div>
+          </div>
+
+          {/* Action Execution & Compliance Export Bar */}
+          <div className="consensus-actions-row">
+            <button className="btn-consensus-trade" onClick={onOpenOrderTerminal}>
+              <Zap size={14} />
+              <span>Execute Guardrailed Trade</span>
+            </button>
+            <button className="btn-consensus-memo" onClick={onOpenInvestmentMemo}>
+              <FileText size={14} />
+              <span>Export Compliance Memo</span>
+            </button>
           </div>
 
           {/* Conflict Resolution Banner (If detected) */}

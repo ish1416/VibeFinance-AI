@@ -7,6 +7,11 @@ import { ConsensusDecision } from "./components/ConsensusDecision";
 import { DocumentCitationModal } from "./components/DocumentCitationModal";
 import { ArchitectureModal } from "./components/ArchitectureModal";
 import { PerformanceTelemetry } from "./components/PerformanceTelemetry";
+import { AudioBriefing } from "./components/AudioBriefing";
+import { MacroShockSimulator } from "./components/MacroShockSimulator";
+import { SwarmScreenerModal } from "./components/SwarmScreenerModal";
+import { OrderTerminalModal } from "./components/OrderTerminalModal";
+import { InvestmentMemoModal } from "./components/InvestmentMemoModal";
 import { STOCKS_DATA } from "./data/stocksData";
 import { runTechnicalAgent } from "./agents/technicalAgent";
 import { runFundamentalRAGAgent } from "./agents/fundamentalAgent";
@@ -21,6 +26,12 @@ export default function App() {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [showCitationModal, setShowCitationModal] = useState(false);
   const [showArchitectureModal, setShowArchitectureModal] = useState(false);
+
+  // Advanced Feature States
+  const [activeMacroScenario, setActiveMacroScenario] = useState("BASELINE");
+  const [showScreenerModal, setShowScreenerModal] = useState(false);
+  const [showOrderTerminal, setShowOrderTerminal] = useState(false);
+  const [showInvestmentMemo, setShowInvestmentMemo] = useState(false);
 
   // Auto Demo Tour State
   const [isTourRunning, setIsTourRunning] = useState(false);
@@ -173,6 +184,7 @@ export default function App() {
         onToggleDegraded={() => setIsDegraded(!isDegraded)}
         onOpenArchitecture={() => setShowArchitectureModal(true)}
         onOpenCitations={() => setShowCitationModal(true)}
+        onOpenScreener={() => setShowScreenerModal(true)}
         citationsCount={synthesis.citationsCount}
         isTourRunning={isTourRunning}
         onStartTour={startTour}
@@ -206,6 +218,15 @@ export default function App() {
           isAnalyzing={isAnalyzing}
         />
 
+        {/* Dalal Street AI Voice Briefing */}
+        <AudioBriefing
+          stock={currentStock}
+          synthesis={synthesis}
+          technicalResult={technicalResult}
+          fundamentalResult={fundamentalResult}
+          riskProfile={selectedRiskProfile}
+        />
+
         {/* Degraded Mode Warning Alert (When toggled) */}
         {isDegraded && (
           <div className="degraded-alert-banner">
@@ -223,6 +244,16 @@ export default function App() {
           synthesis={synthesis}
           selectedRiskProfile={selectedRiskProfile}
           onSelectRiskProfile={(profile) => setSelectedRiskProfile(profile)}
+          onOpenOrderTerminal={() => setShowOrderTerminal(true)}
+          onOpenInvestmentMemo={() => setShowInvestmentMemo(true)}
+        />
+
+        {/* Macro Stress-Testing & Shock Simulator */}
+        <MacroShockSimulator
+          activeScenario={activeMacroScenario}
+          onSelectScenario={(sc) => setActiveMacroScenario(sc)}
+          stock={currentStock}
+          synthesis={synthesis}
         />
 
         {/* Price Action & Indicator Chart */}
@@ -254,7 +285,7 @@ export default function App() {
             <span className="footer-sub">Built for Wild Bugs 24-Hour Online Hackathon • Problem Statement 04</span>
           </div>
           <div className="footer-right">
-            <span>Builders: <strong>Ishita Singh & Atharv Soni (Team SHAKTI)</strong></span>
+            <span>Team: <strong>SHAKTI (Wild Bugs Finalist)</strong></span>
           </div>
         </div>
       </footer>
@@ -270,6 +301,32 @@ export default function App() {
       <ArchitectureModal
         isOpen={showArchitectureModal}
         onClose={() => setShowArchitectureModal(false)}
+      />
+
+      <SwarmScreenerModal
+        isOpen={showScreenerModal}
+        onClose={() => setShowScreenerModal(false)}
+        onSelectStock={(sym) => setSelectedSymbol(sym)}
+        currentRiskProfile={selectedRiskProfile}
+      />
+
+      <OrderTerminalModal
+        isOpen={showOrderTerminal}
+        onClose={() => setShowOrderTerminal(false)}
+        stock={currentStock}
+        synthesis={synthesis}
+        riskProfile={selectedRiskProfile}
+      />
+
+      <InvestmentMemoModal
+        isOpen={showInvestmentMemo}
+        onClose={() => setShowInvestmentMemo(false)}
+        stock={currentStock}
+        synthesis={synthesis}
+        technicalResult={technicalResult}
+        fundamentalResult={fundamentalResult}
+        sentimentResult={sentimentResult}
+        riskProfile={selectedRiskProfile}
       />
     </div>
   );

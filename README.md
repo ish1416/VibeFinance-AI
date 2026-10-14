@@ -74,6 +74,25 @@ India's retail investment ecosystem has exploded past **160 million registered d
 
 ---
 
+## 🌟 Advanced Innovation Features
+
+1. **🎙️ Dalal Street 60-Sec AI Voice Briefing:**
+   - Synthesizes real-time spoken market briefings with an interactive Web Speech audio player and animated sound equalizer wave, translating multi-agent technical, fundamental, and sentiment consensus into human speech.
+
+2. **⚡ Macro Stress-Testing & Shock Simulator ("What-If" Engine):**
+   - Allows users to simulate real-world macroeconomic disruptions — including surprise RBI Repo Rate hikes (+50 bps), Brent Crude oil spikes ($105/bbl), and institutional FII liquidity flight — dynamically recalibrating trailing stop-losses, downside risk probabilities, and hedging actions.
+
+3. **📊 Multi-Asset Autonomous Swarm Screener:**
+   - Side-by-side comparative matrix evaluating Indian equities across all parallel agent dimensions (RSI, DMA crossovers, SEBI audited health score, FII/DII flow direction, and unified consensus ratings).
+
+4. **🛡️ Institutional Guardrailed Paper Trading Terminal:**
+   - Translates algorithmic verdicts into executable 3-legged bracket orders (Limit Entry, Dynamic Take Profit, and Hard Stop-Loss Floor) calibrated to personal risk limits and portfolio capital.
+
+5. **📄 1-Click SEBI Compliance & Investment Memorandum Generator:**
+   - Compiles a complete audit-ready equity research memorandum formatted for institutional review and printable directly to PDF with verified LODR document citations.
+
+---
+
 ## 💻 Tech Stack
 
 * **Frontend:** React 19, Vite, Vanilla CSS (Design Tokens, Glassmorphism, Micro-Animations).

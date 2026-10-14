@@ -1,11 +1,12 @@
 import React from "react";
-import { Activity, ShieldAlert, Cpu, BookOpen, AlertTriangle, Play, Square } from "lucide-react";
+import { Activity, ShieldAlert, Cpu, BookOpen, AlertTriangle, Play, Square, Layers } from "lucide-react";
 
 export function Navbar({
   isDegraded,
   onToggleDegraded,
   onOpenArchitecture,
   onOpenCitations,
+  onOpenScreener,
   citationsCount,
   isTourRunning,
   onStartTour,
@@ -77,6 +78,12 @@ export function Navbar({
           <BookOpen size={15} />
           <span>Verified SEBI Citations</span>
           <span className="citation-badge">{citationsCount}</span>
+        </button>
+
+        {/* Swarm Screener Matrix Button */}
+        <button className="btn-screener" onClick={onOpenScreener} title="Compare all 4 securities across multi-agent dimensions">
+          <Layers size={15} />
+          <span>Swarm Matrix</span>
         </button>
 
         {/* System Architecture & Rubric Review Modal */}
