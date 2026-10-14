@@ -1,7 +1,16 @@
 import React from "react";
-import { Activity, ShieldAlert, Cpu, BookOpen, AlertTriangle } from "lucide-react";
+import { Activity, ShieldAlert, Cpu, BookOpen, AlertTriangle, Play, Square } from "lucide-react";
 
-export function Navbar({ isDegraded, onToggleDegraded, onOpenArchitecture, onOpenCitations, citationsCount }) {
+export function Navbar({
+  isDegraded,
+  onToggleDegraded,
+  onOpenArchitecture,
+  onOpenCitations,
+  citationsCount,
+  isTourRunning,
+  onStartTour,
+  onStopTour
+}) {
   return (
     <header className="navbar">
       <div className="navbar-left">
@@ -25,6 +34,25 @@ export function Navbar({ isDegraded, onToggleDegraded, onOpenArchitecture, onOpe
       </div>
 
       <div className="navbar-right">
+        {/* Interactive Autonomous Demo Tour */}
+        <button
+          className={`btn-tour ${isTourRunning ? "active-tour" : ""}`}
+          onClick={isTourRunning ? onStopTour : onStartTour}
+          title="Play autonomous walkthrough demo of VibeFinance AI"
+        >
+          {isTourRunning ? (
+            <>
+              <Square size={13} fill="currentColor" />
+              <span>Stop Tour</span>
+            </>
+          ) : (
+            <>
+              <Play size={13} fill="currentColor" />
+              <span>Auto Demo Tour</span>
+            </>
+          )}
+        </button>
+
         {/* Degraded Mode Simulation Toggle (PS 04 Mandatory Requirement) */}
         <button
           className={`btn-degraded ${isDegraded ? "active-degraded" : ""}`}

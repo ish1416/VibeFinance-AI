@@ -84,6 +84,14 @@ India's retail investment ecosystem has exploded past **160 million registered d
 
 ---
 
+## 🌐 Live Application & Demo Links
+
+* **Live Interactive Platform:** [https://ish1416.github.io/VibeFinance-AI/](https://ish1416.github.io/VibeFinance-AI/)
+* **Autonomous 1-Click Guided Tour:** [https://ish1416.github.io/VibeFinance-AI/?demo=true](https://ish1416.github.io/VibeFinance-AI/?demo=true)
+* **Demo Video:** Recorded walkthrough saved in `VibeFinance_AI_Demo_Video.mov`
+
+---
+
 ## ⚡ Quick Start (Run Locally in 2 Minutes)
 
 ```bash
@@ -100,7 +108,7 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:5173/` in your browser.
+Open `http://localhost:5173/` in your browser, or click **"Auto Demo Tour"** in the top navigation bar to watch the autonomous multi-agent evaluation in real time!
 
 ---
 
