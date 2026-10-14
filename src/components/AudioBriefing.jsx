@@ -1,19 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Volume2, VolumeX, Play, Pause, RotateCcw, Sparkles } from "lucide-react";
+import { Volume2, Play, Pause, RotateCcw, Sparkles } from "lucide-react";
 
 export function AudioBriefing({ stock, synthesis, technicalResult, fundamentalResult, riskProfile }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [speechRate, setSpeechRate] = useState(1.1);
-  const [isSupported, setIsSupported] = useState(true);
+  const [isSupported] = useState(() => typeof window !== "undefined" && "speechSynthesis" in window);
   const synthRef = useRef(null);
   const utteranceRef = useRef(null);
 
   useEffect(() => {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       synthRef.current = window.speechSynthesis;
-    } else {
-      setIsSupported(false);
     }
 
     return () => {
@@ -25,7 +23,7 @@ export function AudioBriefing({ stock, synthesis, technicalResult, fundamentalRe
 
   // Cancel audio if stock changes
   useEffect(() => {
-    if (synthRef.current && isPlaying) {
+    if (synthRef.current) {
       synthRef.current.cancel();
       setIsPlaying(false);
       setIsPaused(false);

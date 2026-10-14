@@ -1,5 +1,5 @@
 import React from "react";
-import { Activity, ShieldAlert, Cpu, BookOpen, AlertTriangle, Play, Square, Layers, Database } from "lucide-react";
+import { ShieldAlert, Cpu, BookOpen, AlertTriangle, Play, Square, Layers, Database } from "lucide-react";
 
 export function Navbar({
   isDegraded,

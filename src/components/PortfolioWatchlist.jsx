@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Briefcase, Bell, Plus, Trash2, ArrowUpRight, ArrowDownRight, RefreshCw, PieChart, Shield, AlertTriangle } from "lucide-react";
+import { Briefcase, Bell, ArrowUpRight, Shield } from "lucide-react";
 
 export function PortfolioWatchlist({ onSelectStock, currentRiskProfile }) {
   const [activeTab, setActiveTab] = useState("PORTFOLIO"); // PORTFOLIO | WATCHLIST
 
   // Simulated Live Portfolio Holdings
-  const [holdings, setHoldings] = useState([
+  const [holdings] = useState([
     { symbol: "RELIANCE", name: "Reliance Industries", shares: 80, avgPrice: 2810.0, currentPrice: 2940.5, sector: "Energy & Conglomerate" },
     { symbol: "INFY", name: "Infosys Ltd", shares: 150, avgPrice: 1720.0, currentPrice: 1895.0, sector: "Information Technology" },
     { symbol: "HDFCBANK", name: "HDFC Bank Ltd", shares: 120, avgPrice: 1680.0, currentPrice: 1642.0, sector: "Banking & Financials" },
@@ -13,7 +13,7 @@ export function PortfolioWatchlist({ onSelectStock, currentRiskProfile }) {
   ]);
 
   // Simulated Watchlist with dynamic alerts
-  const [watchlist, setWatchlist] = useState([
+  const [watchlist] = useState([
     { symbol: "RELIANCE", alertCondition: "RSI > 68 (Momentum Breakout)", status: "TRIGGERED", color: "#10b981" },
     { symbol: "INFY", alertCondition: "SEBI Q3 Earnings Margin > 21%", status: "ACTIVE", color: "#06b6d4" },
     { symbol: "HDFCBANK", alertCondition: "NIM Compression Warning", status: "MONITORING", color: "#f59e0b" },

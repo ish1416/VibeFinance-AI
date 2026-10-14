@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { X, Search, Database, ExternalLink, Sparkles, Filter, FileText } from "lucide-react";
+import { X, Search, Database, ExternalLink, Sparkles } from "lucide-react";
 import { RAG_CORPUS } from "../data/ragCorpus";
 
 export function SemanticSearchModal({ isOpen, onClose }) {
-  if (!isOpen) return null;
-
   const [query, setQuery] = useState("Reliance New Energy Jamnagar gigafactory capex");
   const [selectedStock, setSelectedStock] = useState("ALL");
+
+  if (!isOpen) return null;
 
   // Flatten all corpus items
   const allDocs = Object.keys(RAG_CORPUS).flatMap((sym) =>

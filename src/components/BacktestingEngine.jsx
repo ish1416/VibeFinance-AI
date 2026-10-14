@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { History, TrendingUp, Award, BarChart3, ShieldCheck, CheckCircle2, XCircle } from "lucide-react";
+import { History, ShieldCheck, CheckCircle2 } from "lucide-react";
 
-export function BacktestingEngine() {
-  const [isOpen, setIsOpen] = useState(false);
+export function BacktestingEngine({ isAlwaysOpen = false }) {
+  const [isOpen, setIsOpen] = useState(isAlwaysOpen);
   const [selectedFilter, setSelectedFilter] = useState("ALL");
 
   const backtestLogs = [

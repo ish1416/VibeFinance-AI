@@ -1,5 +1,5 @@
 import React from "react";
-import { X, Cpu, CheckCircle2, ShieldAlert, Award, FileCode2 } from "lucide-react";
+import { X, Cpu, CheckCircle2, Award } from "lucide-react";
 
 export function ArchitectureModal({ isOpen, onClose }) {
   if (!isOpen) return null;

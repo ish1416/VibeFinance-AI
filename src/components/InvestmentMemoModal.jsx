@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { X, Printer, Copy, Check, FileText, Download } from "lucide-react";
+import { X, Printer, Copy, Check, FileText } from "lucide-react";
+
+const TODAY_DATE = new Date().toLocaleDateString("en-IN", { dateStyle: "long" });
 
 export function InvestmentMemoModal({
   isOpen,
@@ -83,7 +85,7 @@ DISCLAIMER: Generated autonomously by VibeFinance AI Tri-Agent Architecture. Gro
                 <span className="memo-doc-type">CONFIDENTIAL EQUITY INTELLIGENCE MEMORANDUM</span>
               </div>
               <div className="memo-meta-block">
-                <span><strong>Date:</strong> {new Date().toLocaleDateString("en-IN", { dateStyle: "long" })}</span>
+                <span><strong>Date:</strong> {TODAY_DATE}</span>
                 <span><strong>Security:</strong> {stock.name} ({stock.symbol})</span>
                 <span><strong>Sector:</strong> {stock.sector} • NSE India</span>
               </div>

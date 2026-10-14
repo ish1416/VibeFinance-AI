@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { X, ShieldAlert, CheckCircle2, ArrowUpRight, Percent, IndianRupee, Sliders } from "lucide-react";
+import { X, ShieldAlert, CheckCircle2, ArrowUpRight } from "lucide-react";
 
 export function OrderTerminalModal({ isOpen, onClose, stock, synthesis, riskProfile }) {
-  if (!isOpen) return null;
-
   const [portfolioCapital, setPortfolioCapital] = useState(500000);
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [orderReceipt, setOrderReceipt] = useState(null);
+
+  if (!isOpen) return null;
 
   // Capital allocation % according to risk persona
   const allocationPercent = riskProfile === "CONSERVATIVE" ? 10 : riskProfile === "AGGRESSIVE" ? 30 : 20;

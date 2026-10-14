@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Zap, AlertCircle, TrendingDown, Flame, DollarSign, RefreshCw, CheckCircle2 } from "lucide-react";
+import { Zap, AlertCircle, TrendingDown, Flame, DollarSign, RefreshCw } from "lucide-react";
 
-export const MACRO_SCENARIOS = {
+const MACRO_SCENARIOS = {
   BASELINE: {
     id: "BASELINE",
     title: "Standard Market Baseline",
@@ -48,8 +48,8 @@ export const MACRO_SCENARIOS = {
   }
 };
 
-export function MacroShockSimulator({ activeScenario, onSelectScenario, stock, synthesis }) {
-  const [isOpen, setIsOpen] = useState(false);
+export function MacroShockSimulator({ activeScenario, onSelectScenario, _stock, synthesis, isAlwaysOpen = false }) {
+  const [isOpen, setIsOpen] = useState(isAlwaysOpen);
   const currentScenario = MACRO_SCENARIOS[activeScenario] || MACRO_SCENARIOS.BASELINE;
 
   const adjustedTarget = (synthesis.targetPrice * (1 + currentScenario.targetAdjustment / 100)).toFixed(1);

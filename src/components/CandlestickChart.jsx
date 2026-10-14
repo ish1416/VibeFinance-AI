@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BarChart3, TrendingUp, Sliders } from "lucide-react";
+import { BarChart3 } from "lucide-react";
 
 export function CandlestickChart({ stock }) {
   const [hoveredCandle, setHoveredCandle] = useState(null);
