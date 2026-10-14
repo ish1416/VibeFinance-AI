@@ -100,7 +100,7 @@ async def corpus_search(
     Hybrid Retrieval Inspector (BM25 + Dense Vectors) over audited SEBI filings.
     """
     results = retriever.retrieve(query=q, symbol=symbol, top_k=k)
-    return {"query": q, "symbol_filter": symbol, "results_count": len(results), "chunks": results}
+    return {"query": q, "symbol_filter": symbol, "results_count": len(results), "chunks": results, "results": results}
 
 
 @app.get("/api/eval/report")

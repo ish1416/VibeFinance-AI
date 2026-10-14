@@ -21,6 +21,10 @@ dist-ssr
 *.db
 *.sqlite
 __pycache__/
+*.py[cod]
+.pytest_cache/
+server/data/cache/
+data/cache/
 .venv/
 venv/
 
