@@ -1,0 +1,8 @@
+{
+  "reasoning": "FII net flow +1245.8 Cr; DII net flow +820.4 Cr; Options Put-Call Ratio at 1.28; overall institutional tape sentiment scored at 82/100.",
+  "action": "BUY_FLOW_CONFIRMATION",
+  "model": "deterministic-template",
+  "cached": false,
+  "attempts": 1,
+  "latency_ms": 2
+}

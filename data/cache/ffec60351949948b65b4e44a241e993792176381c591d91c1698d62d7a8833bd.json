@@ -1,0 +1,8 @@
+{
+  "reasoning": "Consolidated EBITDA for the quarter stood at \u20b942,748 crore ($5.12B), up 2.0% YoY. Jio Platforms EBITDA grew 11.6% YoY to \u20b914,638 crore led by higher subscriber base (489.7M) and monthly ARPU expansion to \u20b9181.7. Current P/E is 26.8 against sector valuation baseline. Audited filings confirm robust free cash flow conversion and conservative leverage.",
+  "action": "ACCUMULATE_LONG_TERM",
+  "model": "deterministic-template",
+  "cached": false,
+  "attempts": 1,
+  "latency_ms": 2
+}

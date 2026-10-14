@@ -1,0 +1,8 @@
+{
+  "reasoning": "Portfolio concentration HHI evaluated at 0.303; beta-weighted risk exposure stands at 1.14. Position sizing complies with established risk management guardrails.",
+  "action": "MAINTAIN_ALLOCATION",
+  "model": "deterministic-template",
+  "cached": false,
+  "attempts": 1,
+  "latency_ms": 2
+}
