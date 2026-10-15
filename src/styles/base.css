@@ -1,0 +1,193 @@
+/* ============================================================================
+   VibeFinance AI — base layer. Tokens only; no component-specific rules here.
+   ========================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--vf-backdrop);
+  color: var(--vf-text-1);
+  font-family: var(--vf-font);
+  font-size: var(--vf-fs-body);
+  font-weight: 400;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: tabular-nums;
+  overflow: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+svg {
+  flex: none;
+}
+
+/* ── Type utilities ─────────────────────────────────────────────────────── */
+.vf-t-title {
+  font-size: var(--vf-fs-title);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.vf-t-stat {
+  font-size: var(--vf-fs-stat);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.vf-t-paneltitle {
+  font-size: var(--vf-fs-paneltitle);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.vf-t-cardtitle {
+  font-size: var(--vf-fs-cardtitle);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.vf-t-label {
+  font-size: var(--vf-fs-label);
+  font-weight: 700;
+}
+
+.vf-t-body {
+  font-size: var(--vf-fs-body);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--vf-text-2);
+}
+
+.vf-t-meta {
+  font-size: var(--vf-fs-meta);
+  font-weight: 500;
+  color: var(--vf-text-2);
+}
+
+/* decorative only — below AA on the canvas, never carries meaning */
+.vf-t-faint {
+  font-size: var(--vf-fs-meta);
+  font-weight: 500;
+  color: var(--vf-text-3);
+}
+
+.vf-t-pill {
+  font-size: var(--vf-fs-pill);
+  font-weight: 600;
+}
+
+.vf-t-micro {
+  font-size: var(--vf-fs-micro);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vf-muted {
+  color: var(--vf-text-2);
+}
+
+.vf-faint {
+  color: var(--vf-text-3);
+}
+
+/* ── Clamping ───────────────────────────────────────────────────────────── */
+.vf-clamp-2,
+.vf-clamp-3,
+.vf-clamp-4 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.vf-clamp-2 { -webkit-line-clamp: 2; }
+.vf-clamp-3 { -webkit-line-clamp: 3; }
+.vf-clamp-4 { -webkit-line-clamp: 4; }
+
+/* ── Focus: visible ring on every interactive element ───────────────────── */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--vf-text-1);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.vf-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Scrollbars ─────────────────────────────────────────────────────────── */
+.vf-scroll {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #d9d9e3 transparent;
+}
+.vf-scroll::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.vf-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.vf-scroll::-webkit-scrollbar-thumb {
+  background: var(--vf-dashed);
+  border-radius: var(--vf-r-pill);
+}
+
+/* ── Motion ─────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    scroll-behavior: auto !important;
+  }
+}

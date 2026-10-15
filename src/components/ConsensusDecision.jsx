@@ -1,5 +1,5 @@
 import React from "react";
-import { Sparkles, Shield, AlertTriangle, CheckCircle2, UserCheck, Flame, Scale, Zap, FileText } from "lucide-react";
+import { Sparkles, Shield, AlertTriangle, CheckCircle2, UserCheck, Flame, Scale } from "lucide-react";
 import { RISK_PROFILES } from "../agents/synthesisEngine";
 
 export function ConsensusDecision({

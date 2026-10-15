@@ -1,4 +1,4 @@
-import { RAG_CORPUS } from "../data/ragCorpus";
+import { RAG_CORPUS } from "../data/ragCorpus.js";
 
 // Agent 2: Retrieval-Augmented Fundamental & SEBI Regulatory Filing Auditor
 export function runFundamentalRAGAgent(stock, isDegraded = false) {
@@ -86,7 +86,11 @@ export function runFundamentalRAGAgent(stock, isDegraded = false) {
       marketCap: stock.marketCap,
       auditedMetrics: primaryDoc.metrics
     },
-    reasoning: `Retrieved and audited ${primaryDoc.documentName} (${primaryDoc.chunkId}). ${primaryDoc.highlightQuote} Current P/E is ${stock.peRatio} vs historical sector median of 24.5. Balance sheet health confirmed with strong capital allocation discipline.`,
+    // The valuation reference is computed from the tracked universe and passed in
+    // (see runEngine in src/domain/analysis.js). Never assert an unsourced number.
+    reasoning: `Retrieved and audited ${primaryDoc.documentName} (${primaryDoc.chunkId}). ${primaryDoc.highlightQuote} Current P/E is ${stock.peRatio}${
+      stock.sectorMedianPE ? ` against a tracked-universe median of ${stock.sectorMedianPE}` : ""
+    }. Balance sheet health confirmed with strong capital allocation discipline.`,
     actionRecommendation: action,
     executionTimeMs: latency
   };

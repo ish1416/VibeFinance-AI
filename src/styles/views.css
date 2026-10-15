@@ -1,0 +1,291 @@
+/* ============================================================================
+   VibeFinance AI — view compositions. Tokens only.
+   ========================================================================= */
+
+.vf-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--vf-s2);
+}
+
+.vf-stack--tight {
+  gap: 10px;
+}
+
+.vf-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.vf-inline--between {
+  justify-content: space-between;
+}
+
+.vf-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--vf-s2);
+}
+
+.vf-tile {
+  background: var(--vf-surface);
+  border: 1px solid var(--vf-hairline);
+  border-radius: 18px;
+  padding: 12px 14px;
+}
+
+.vf-tile--pastel {
+  background: var(--vf-p-lilac);
+  border-color: transparent;
+}
+
+/* ── Chart ──────────────────────────────────────────────────────────────── */
+.vf-chartwrap {
+  background: var(--vf-surface);
+  border: 1px solid var(--vf-hairline);
+  border-radius: var(--vf-r-card);
+  padding: var(--vf-pad-card);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vf-chart-tooltip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  min-height: 18px;
+  font-size: var(--vf-fs-meta);
+  color: var(--vf-text-2);
+  font-weight: 500;
+}
+
+/* ── Holdings ───────────────────────────────────────────────────────────── */
+.vf-holding {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--vf-hairline);
+}
+
+.vf-holding:last-child {
+  border-bottom: 0;
+}
+
+.vf-holding__left {
+  min-width: 0;
+}
+
+.vf-holding__sym {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.vf-holding__meta {
+  font-size: var(--vf-fs-meta);
+  color: var(--vf-text-2);
+}
+
+.vf-holding__right {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.vf-holding__val {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.vf-weightbar {
+  width: 72px;
+  height: 6px;
+  border-radius: var(--vf-r-pill);
+  background: var(--vf-soft);
+  overflow: hidden;
+}
+
+.vf-weightbar__fill {
+  height: 100%;
+  background: var(--vf-frame);
+}
+
+/* ── Appetite slider ────────────────────────────────────────────────────── */
+.vf-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 22px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.vf-slider::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: var(--vf-r-pill);
+  background: var(--vf-soft);
+}
+
+.vf-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: var(--vf-frame);
+  border: 2px solid var(--vf-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.vf-slider::-moz-range-track {
+  height: 6px;
+  border-radius: var(--vf-r-pill);
+  background: var(--vf-soft);
+}
+
+.vf-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--vf-frame);
+  border: 2px solid var(--vf-surface);
+}
+
+/* ── Audited prose ──────────────────────────────────────────────────────── */
+.vf-mark {
+  background: var(--vf-p-yellow);
+  padding: 1px 3px;
+  border-radius: 5px;
+  color: var(--vf-text-1);
+}
+
+.vf-mark--bad {
+  background: var(--vf-bad);
+  color: var(--vf-bad-ink);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  cursor: help;
+}
+
+/* ── Terminal-ish log ───────────────────────────────────────────────────── */
+.vf-logline {
+  display: flex;
+  gap: 8px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── Segmented row (security picker) ───────────────────────────────────── */
+.vf-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.vf-picker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: var(--vf-r-pill);
+  background: var(--vf-surface);
+  border: 1px solid var(--vf-hairline);
+  font-size: 12px;
+  font-weight: 600;
+  transition: transform var(--vf-dur) var(--vf-ease), background var(--vf-dur) var(--vf-ease);
+}
+
+.vf-picker__item:hover {
+  transform: translateY(-2px);
+}
+
+.vf-picker__item.is-active {
+  background: var(--vf-frame);
+  color: var(--vf-on-dark);
+  border-color: transparent;
+}
+
+.vf-picker__price {
+  color: var(--vf-text-2);
+  font-weight: 500;
+}
+
+.vf-picker__item.is-active .vf-picker__price {
+  color: var(--vf-nav-icon);
+}
+
+.vf-up { color: #1f6b2a; }
+.vf-down { color: var(--vf-bad-ink); }
+
+/* ── Ledger row ─────────────────────────────────────────────────────────── */
+.vf-ledger {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--vf-pad-card);
+  background: var(--vf-surface);
+  border: 1px solid var(--vf-hairline);
+  border-radius: var(--vf-r-card);
+}
+
+.vf-ledger__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.vf-ledger__id {
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  padding: 0 7px;
+  border-radius: var(--vf-r-pill);
+  background: var(--vf-soft);
+  color: var(--vf-soft-ink);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.vf-details > summary {
+  cursor: pointer;
+  font-size: var(--vf-fs-meta);
+  font-weight: 600;
+  color: var(--vf-text-2);
+  padding: 2px 0;
+}
+
+.vf-details > summary:hover {
+  color: var(--vf-text-1);
+}
+
+.vf-details[open] > summary {
+  margin-bottom: 8px;
+}
+
+/* ── Modal-specific ─────────────────────────────────────────────────────── */
+.vf-arch {
+  background: var(--vf-frame);
+  color: #d7d7de;
+  border-radius: 18px;
+  padding: 14px 16px;
+  font-size: 11px;
+  line-height: 1.6;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+@media (max-width: 1279px) {
+  .vf-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767px) {
+  .vf-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .vf-weightbar { display: none; }
+}
