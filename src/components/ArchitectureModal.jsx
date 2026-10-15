@@ -133,7 +133,7 @@ export function ArchitectureModal({ isOpen, onClose }) {
         </div>
 
         <div className="modal-footer">
-          <span className="footer-note">Built for Wild Bugs 24-Hour Hackathon • Team SHAKTI (Ishita Singh & Atharv Soni)</span>
+          <span className="footer-note">Built for Wild Bugs 24-Hour Hackathon • Team SHAKTI</span>
           <button className="btn-done" onClick={onClose}>Close Architecture View</button>
         </div>
       </div>

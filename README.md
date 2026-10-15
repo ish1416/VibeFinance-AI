@@ -10,7 +10,7 @@
 
 [![Wild Bugs Hackathon](https://img.shields.io/badge/Wild%20Bugs-Hackathon%20Project-06b6d4?style=for-the-badge)](https://wild-bugs.devfolio.co/)
 [![Problem Statement](https://img.shields.io/badge/Problem%20Statement-PS%2004%20VibeFinance-10b981?style=for-the-badge)](https://wild-bugs.devfolio.co/)
-[![Team SHAKTI](https://img.shields.io/badge/Team-SHAKTI-8b5cf6?style=for-the-badge)](#-team-shakti)
+[![Team SHAKTI](https://img.shields.io/badge/Team-SHAKTI-8b5cf6?style=for-the-badge)](#-hackathon-submission)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
 ---

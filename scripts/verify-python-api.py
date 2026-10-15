@@ -82,7 +82,7 @@ async def main():
     print(f"  · Mean Reciprocal Rank (MRR): {eval_res['mean_reciprocal_rank_mrr']:.3f}")
     check(eval_res["hit_rate_at_5"] >= 0.85, f"Hit-Rate@5 below 85%: {eval_res['hit_rate_at_5']}", failures)
 
-    # 2. Test RELIANCE Analysis (The primary check Atharv asked for)
+    # 2. Test RELIANCE Analysis (Primary multi-agent consensus test)
     print("\n[2/3] Executing Swarm Analysis for RELIANCE (Nominal + Degraded)...")
     reliance_nominal = await execute_swarm_analysis(
         symbol="RELIANCE", risk_appetite=6, user_id="aarav", is_degraded=False

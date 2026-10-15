@@ -319,7 +319,7 @@ export function ControlCenter({
               <strong>VibeFinance AI</strong> · Autonomous Multi-Agent Financial Intelligence Platform · Built for Wild Bugs
               24-Hour Online Hackathon, Problem Statement 04
             </span>
-            <span>Builders: <strong>Ishita Singh &amp; Atharv Soni (Team SHAKTI)</strong></span>
+            <span>Built with pride by <strong>Team SHAKTI</strong></span>
           </>
         }
       />

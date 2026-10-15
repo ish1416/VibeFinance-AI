@@ -123,7 +123,7 @@ than rewritten — their props, state and data bindings stay exactly as they are
 | Wordmark + green dot + micro label | `.brand-title` + `.brand-subtitle` (Navbar.jsx) | Label = existing `NSE LIVE` + `NIFTY 50 24,862.15 +0.48%` as the 9px micro label |
 | Centre icon nav (active pill + icon-only) | the 5 existing sections | Tabs: **Decision · Signals · Swarm · Evidence · Portfolio**. Active = pill with icon + label; others icon-only. This is the same content, navigated — no new features |
 | Notch below the bar | — | pure decoration via a TopNav `::after` |
-| Avatar + name + email + chevron | `.user-badge` (`IS`, `Ishita Singh`, `Team SHAKTI`) | chevron opens the existing action set (Degraded toggle, Citations, Architecture) for the responsive case |
+| Avatar + name + email + chevron | `.user-badge` (`TS`, `Team SHAKTI`, `Wild Bugs Hackathon`) | chevron opens the existing action set (Degraded toggle, Citations, Architecture) for the responsive case |
 | Left rail top group | `.btn-refresh-agents` (Re-Run Swarm) + degraded toggle | black circle = run, white = degraded (black when active) |
 | Left rail count badge | `.citation-badge` value | the badge lives on the Citations circle |
 | Left rail bottom group | Architecture, Audit-pack download, Stock picker, Citations | 36px white circles |

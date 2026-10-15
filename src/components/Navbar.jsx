@@ -1,5 +1,5 @@
 import React from "react";
-import { ShieldAlert, Cpu, BookOpen, AlertTriangle } from "lucide-react";
+import { ShieldAlert, Cpu, BookOpen, AlertTriangle, Square, Play, Database, Layers } from "lucide-react";
 
 export function Navbar({
   isDegraded,
@@ -101,10 +101,10 @@ export function Navbar({
 
         {/* User Account / Team Badge */}
         <div className="user-badge">
-          <div className="user-avatar">IS</div>
+          <div className="user-avatar">TS</div>
           <div className="user-info">
-            <span className="user-name">Ishita Singh</span>
-            <span className="user-team">Team SHAKTI</span>
+            <span className="user-name">Team SHAKTI</span>
+            <span className="user-team">Wild Bugs Hackathon</span>
           </div>
         </div>
       </div>
