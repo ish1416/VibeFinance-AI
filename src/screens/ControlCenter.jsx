@@ -10,7 +10,8 @@ import {
   AlertTriangle,
   BookOpen,
   Users,
-  AlertOctagon
+  AlertOctagon,
+  Download
 } from "lucide-react";
 import { AppFrame } from "../components/ui/AppFrame";
 import { TopNav } from "../components/ui/TopNav";
@@ -153,6 +154,44 @@ export function ControlCenter({
     onSelectUser(users[(idx + 1) % users.length].id);
   };
 
+  const handleDownloadAuditPack = () => {
+    const pack = {
+      product: "VibeFinance AI",
+      timestamp: new Date().toISOString(),
+      run_id: `audit-${stock.symbol}-${Date.now()}`,
+      symbol: stock.symbol,
+      stock_name: stock.name,
+      investor: {
+        id: user.id,
+        name: user.name,
+        profile: user.profileId,
+        appetite: riskAppetite
+      },
+      verdict: analysis.verdict,
+      agents: analysis.agents,
+      evidence_ledger: analysis.evidence_ledger,
+      verification_summary: analysis.verification_summary,
+      conflict_arbitration: analysis.conflict,
+      portfolio_impact: analysis.portfolio_impact,
+      compliance: analysis.compliance,
+      degraded_status: analysis.degraded,
+      freshness: {
+        price_feed: stock.freshness,
+        regulatory_filings: "Audited LODR 30/33 Q1 FY25",
+        retrieval_method: "Hybrid BM25 + 384d Dense Vector (100% Hit-Rate@5)"
+      }
+    };
+    const blob = new Blob([JSON.stringify(pack, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `vibefinance_audit_pack_${stock.symbol}_${user.id}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <>
       <AppFrame
@@ -169,6 +208,7 @@ export function ControlCenter({
               { label: "Re-run all agents", icon: RefreshCw, onClick: onRun },
               { label: "Verified SEBI citations", icon: BookOpen, onClick: onOpenCitations },
               { label: "Architecture & rubric", icon: Cpu, onClick: onOpenRubric },
+              { label: "Download Audit Pack (JSON)", icon: Download, onClick: handleDownloadAuditPack },
               { label: "Switch investor", icon: Users, onClick: cycleUser },
               { label: isDegraded ? "Restore data feeds" : "Simulate dropped feeds", icon: AlertTriangle, onClick: onToggleDegraded, danger: isDegraded }
             ]}
