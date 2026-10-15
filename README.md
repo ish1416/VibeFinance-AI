@@ -1,5 +1,12 @@
-# VibeFinance AI 🚀
-### Autonomous Multi-Agent Financial Intelligence & SEBI Document-Grounded Advisory for Retail Investors
+<div align="center">
+  <img src="docs/screenshots/vibefinance_logo.png" width="120" alt="VibeFinance AI Logo" style="border-radius: 24px;" />
+  <h1>VibeFinance AI 🚀</h1>
+  <p><strong>Autonomous Multi-Agent Financial Intelligence & SEBI Document-Grounded Advisory for Retail Investors</strong></p>
+  <p>
+    <a href="docs/vibefinance_core_screens_walkthrough.webp">▶ Watch 1920x1080 Interactive Tour</a> •
+    <a href="docs/vibefinance_conflict_and_resilience_walkthrough.webp">▶ Watch Conflict & Resilience Tour</a>
+  </p>
+</div>
 
 [![Wild Bugs Hackathon](https://img.shields.io/badge/Wild%20Bugs-Hackathon%20Project-06b6d4?style=for-the-badge)](https://wild-bugs.devfolio.co/)
 [![Problem Statement](https://img.shields.io/badge/Problem%20Statement-PS%2004%20VibeFinance-10b981?style=for-the-badge)](https://wild-bugs.devfolio.co/)
